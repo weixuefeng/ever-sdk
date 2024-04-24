@@ -12,7 +12,6 @@
 #include <stdbool.h>
 #include <string.h>
 #endif
-
 /**
  * A Dart_CObject is used for representing Dart objects as native C
  * data outside the Dart heap. These objects are totally detached from
@@ -129,7 +128,6 @@ typedef bool (*DartPostCObjectFnType)(DartPort port_id, struct DartCObject *mess
 
 extern int64_t NATIVE_PORT;
 
-
 char *dart_create_context(int64_t port, const char *config);
 
 void dart_destroy_context(uint32_t context);
@@ -144,3 +142,5 @@ void dart_response_free(void *ptr);
 void dart_string_free(char *ptr);
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
+
+void init_sdk_for_ios(void);

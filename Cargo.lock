@@ -3000,7 +3000,6 @@ dependencies = [
  "num-bigint",
  "num-derive",
  "num-traits",
- "openssl",
  "pbkdf2 0.8.0",
  "pretty_assertions",
  "rand 0.7.3",
@@ -3036,6 +3035,7 @@ dependencies = [
 name = "ton_client_dart"
 version = "0.1.0"
 dependencies = [
+ "libc",
  "tokio",
  "ton_client",
 ]

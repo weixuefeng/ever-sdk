@@ -1,7 +1,17 @@
-#include <stdarg.h>
-#include <stdbool.h>
-#include <stdint.h>
+#if defined(__cplusplus)
+#include <cstdint>
+#include <cstddef>
+#include <cstdbool>
+#include <cstring>
 #include <stdlib.h>
+#include <new>
+#include <type_traits>
+#else
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <string.h>
+#endif
 
 /**
  * A Dart_CObject is used for representing Dart objects as native C
@@ -119,7 +129,6 @@ typedef bool (*DartPostCObjectFnType)(DartPort port_id, struct DartCObject *mess
 
 extern int64_t NATIVE_PORT;
 
-extern Option<DartPostCObjectFnType> POST_C_OBJECT;
 
 char *dart_create_context(int64_t port, const char *config);
 

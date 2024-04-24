@@ -13,6 +13,7 @@ crate-type = [ 'cdylib', 'staticlib' ]
 [dependencies]
 
 ton_client = { path = '../ton_client' }
+libc = "0.2.151"
 
 [dev-dependencies]
 tokio = { default-features = false, features = [ 'sync', 'rt-multi-thread', 'macros', 'time', 'net', 'fs' ], version = '1.4' }

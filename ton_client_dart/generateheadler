@@ -1,0 +1,1 @@
+cbindgen src/lib.rs -c cbindgen.toml > target/tonclient.h

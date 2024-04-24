@@ -1,0 +1,42 @@
+#cargo build --target aarch64-apple-ios --release
+#cargo build --target aarch64-apple-ios-sim --release
+
+# cp ../target/aarch64-apple-ios/release/libton_client_dart.a ../target/aarch64-apple-ios/release/tonclient.a
+# cp ../target/aarch64-apple-ios-sim/release/libton_client_dart.a ../target/aarch64-apple-ios-sim/release/tonclient.a
+
+
+# rm -rf TonClient.xcframework
+
+# cbindgen src/lib.rs -c cbindgen.toml > include/tonclient.h
+
+xcodebuild -create-xcframework \
+-library ../target/aarch64-apple-ios/release/tonclient.a \
+-headers ./include/ \
+-library ../target/aarch64-apple-ios-sim/release/tonclient.a \
+-headers ./include/ \
+-output TonClient.xcframework
+
+# cd TonClient.xcframework/ios-arm64
+# mkdir -p TonClient.framework/Headers
+# mkdir -p TonClient.framework/Modules
+# cp ./Headers/tonclient.h TonClient.framework/Headers/
+# cp ./Headers/module.modulemap TonClient.framework/Modules/
+# cp tonclient.a TonClient.framework/tonclient
+# cp ../Info.plist TonClient.framework/Info.plist
+# rm -rf Headers
+
+# cd ../..
+# cd TonClient.xcframework/ios-arm64-simulator
+# mkdir -p TonClient.framework/Headers
+# mkdir -p TonClient.framework/Modules
+# cp ./Headers/tonclient.h TonClient.framework/Headers/
+# cp ./Headers/module.modulemap TonClient.framework/Modules/
+# cp tonclient.a TonClient.framework/tonclient
+# cp ../Info.plist TonClient.framework/Info.plist
+# rm -rf Headers
+# cd ../..
+
+# cp -r TonClient.xcframework /Users/weixuefeng/source/github/ton_client_flutter/ios/Frameworks/
+
+# cp ../target/aarch64-apple-ios-sim/release/libton_client_dart.a TonClient.framework/
+# cp ./include/tonclient.h TonClient.framework/

@@ -1,0 +1,18 @@
+[package]
+name = "ton_client_dart"
+version = "0.1.0"
+edition = "2021"
+authors = [ 'weixuefeng1018@gmail.com' ]
+license = 'Apache-2.0'
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = 'ton_client_dart'
+crate-type = [ 'cdylib', 'staticlib' ]
+
+[dependencies]
+
+ton_client = { path = '../ton_client' }
+
+[dev-dependencies]
+tokio = { default-features = false, features = [ 'sync', 'rt-multi-thread', 'macros', 'time', 'net', 'fs' ], version = '1.4' }

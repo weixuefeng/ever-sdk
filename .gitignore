@@ -33,3 +33,4 @@ build/
 /tools/**/*.tsbuildinfo
 /tools/package-lock.json
 /**/clion-log.txt
+/ton_client_dart/**/*.so

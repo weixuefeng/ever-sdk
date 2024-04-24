@@ -7,4 +7,4 @@ members = [
     'toncli',
     'api/test',
     'tools/update_trusted_blocks'
-]
+, "ton_client_dart"]

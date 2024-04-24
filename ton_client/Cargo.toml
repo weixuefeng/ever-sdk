@@ -82,6 +82,9 @@ js-sys = { optional = true, version = '0.3.50' }
 wasm-bindgen = { optional = true, version = '0.2.73' }
 wasm-bindgen-futures = { optional = true, version = '0.4.15' }
 
+# optional for android
+openssl = { version = "0.10.64", features = ["vendored"] }
+
 [dependencies.home]
 version = '0.5.3'
 optional = true

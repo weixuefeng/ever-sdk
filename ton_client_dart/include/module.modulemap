@@ -1,0 +1,4 @@
+module TonClient {
+    header "tonclient.h"
+    export *
+}

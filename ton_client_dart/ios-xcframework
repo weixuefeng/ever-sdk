@@ -1,0 +1,50 @@
+# 参数
+scheme="TonClient"
+library_name=${scheme}
+archive_path="archives"
+archive_iphoneos_path="${archive_path}/iphoneos.xcarchive"
+archive_iphone_simulator_path="${archive_path}/iphonesimulator.xcarchive"
+# 静态库公共头文件目录
+library_public_header_path="./include" # 如：${scheme}/public_headers
+out_dir="out"
+
+# 清理
+function build_clean() {
+    echo "======build_clean======"
+
+    rm -rf ./archives
+    rm -rf ./${out_dir}
+} 
+
+# 编译
+function build_library {
+    echo "======build_library======"
+    
+    xcodebuild archive -scheme ${scheme} -sdk iphoneos -archivePath ${archive_iphoneos_path} BUILD_LIBRARY_FOR_DISTRIBUTION=YES SKIP_INSTALL=NO || exit 1
+
+    xcodebuild archive -scheme ${scheme} -sdk iphonesimulator -archivePath ${archive_iphone_simulator_path} BUILD_LIBRARY_FOR_DISTRIBUTION=YES SKIP_INSTALL=NO || exit 1
+}
+
+# 合并
+function build_xcframework() {
+    echo "======build_xcframework======"
+
+    xcodebuild -create-xcframework -library "${archive_iphoneos_path}/Products/usr/local/lib/lib${scheme}.a" -headers "${library_public_header_path}/" -library "${archive_iphone_simulator_path}/Products/usr/local/lib/lib${scheme}.a" -headers "${library_public_header_path}" -output ${out_dir}/${library_name}.xcframework || exit 1
+}
+
+# 压缩
+function build_zip {
+    echo "======build_zip======"
+
+    cd ${out_dir}
+    time=`date +%y%m%d%H%M%S`
+    name=${library_name}_${time}.zip
+    zip -r -m -o ${library_name}.xcframework.zip ${library_name}.xcframework || exit 1
+}
+
+# 调用
+build_clean
+build_library
+build_xcframework
+build_zip
+

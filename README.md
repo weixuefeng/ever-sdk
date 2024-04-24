@@ -69,6 +69,7 @@ You need to install core package and the package with binary for your platform. 
 | Ruby     | [nerzh/ton-client-ruby](https://github.com/nerzh/ton-client-ruby)                                                                                                                        |
 | Scala    | [radianceteam/ton-client-scala](https://github.com/radianceteam/ton-client-scala)                                                                                                        |
 | Swift    | [nerzh/ton-client-swift](https://github.com/nerzh/ton-client-swift)                                                                                                                      |
+| Flutter  | [weixuefeng/ton_client_flutter](https://github.com/weixuefeng/ton_client_flutter)                                                                                                        |
 
 ### If you did not find the language you need
 
